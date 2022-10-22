@@ -4,10 +4,14 @@ const deleteBtn = document.querySelector(".main__tasks-list__delete");
 
 
 const form = document.querySelector(".main__form");
+const completedList = document.querySelector(".list__complete");
 
 const checkEmpty = () => {
-    (taskLinks.children.length > 0) ? empty.classList.add("empty"): empty.classList.remove("empty");
-
+    if (taskLinks.children.length > 0) {
+        empty.classList.add("empty");
+    } else {
+        empty.classList.remove("empty");
+    }
 }
 
 const generateUniqueId = (input) => {
@@ -19,7 +23,7 @@ const makeListElement = (inputValue) => {
     const taskList = document.createElement("li");
     taskList.classList.add("main__tasks-list");
     taskList.innerHTML = `
-        <input type="checkbox" name="new-task" id="${uniqueId}">
+        <input type="checkbox" name="new-task" id="${uniqueId}" class="main__tasks-list__check">
         <input type="text" class="main__tasks-list__name" value="${inputValue}" disabled></input>
         <div >
             <button class="main__tasks-list__edit btn">
@@ -32,9 +36,6 @@ const makeListElement = (inputValue) => {
     `;
     return taskList;
 }
-
-
-
 
 //add
 form.addEventListener("submit", (e) => {
@@ -56,24 +57,29 @@ form.addEventListener("submit", (e) => {
     const makeElement = makeListElement(inputValue);
 
     taskLinks.appendChild(makeElement);
+
     checkEmpty();
+
+
+
+
 });
 
 
 //edit
 document.addEventListener("click", (e) => {
+
     if (e.target.matches('.main__tasks-list__edit') || e.target.matches('.edit__img')) {
         listItem = e.target.parentNode.previousSibling.previousSibling;
-        if(listItem.disabled){
+        if (listItem.disabled) {
             listItem.disabled = false;
 
-            listItem.addEventListener("blur", (e) =>{
+            listItem.addEventListener("blur", (e) => {
                 listItem.disabled = true;
             })
         }
     }
 })
-
 
 
 //delete
@@ -83,3 +89,38 @@ document.addEventListener("click", (e) => {
         checkEmpty();
     }
 });
+
+
+//check
+
+document.addEventListener("click", (e) => {
+    if (e.target.matches('.main__tasks-list__check')) {
+        listCompleted();
+        checkEmpty();
+    }
+});
+
+
+//check the checked item
+const listCompleted = () => {
+
+    if (taskLinks.children) {
+        for (tl of taskLinks.children) {
+            if (tl.children[0].checked) {
+                completedList.appendChild(tl);
+                tl.children[2].children[0].classList.add("empty");
+            }
+        }
+    }
+
+    if (completedList.children) {
+        for (cl of completedList.children) {
+            if (!cl.children[0].checked) {
+                taskLinks.appendChild(cl);
+                cl.children[2].children[0].classList.remove("empty");
+            }
+        }
+
+    }
+
+}

@@ -43,8 +43,6 @@ button * {
 
 .main__tasks {
     list-style-type: none;
-
-
 }
 
 .main__tasks-list {
@@ -132,4 +130,10 @@ input[type=text]:disabled{
 .main__form-btn:hover {
     background-color: #912077;
     cursor: pointer;
+}
+
+.list__complete-title{
+    text-align: center;
+    color: cornsilk;
+    border: 1px solid;
 }
