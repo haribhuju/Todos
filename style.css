@@ -84,6 +84,7 @@ input[type=checkbox]:checked + .main__tasks-list__name{
 }
 
 input[type=text] {
+    font-size: 2rem;
     width: 60%;
     height: 2.5rem;
     border-radius: 10px;
