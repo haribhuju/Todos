@@ -63,14 +63,13 @@ form.addEventListener("submit", (e) => {
 //edit
 document.addEventListener("click", (e) => {
     if (e.target.matches('.main__tasks-list__edit') || e.target.matches('.edit__img')) {
-        listItem = e.target.closest('li');
-        for (let child of listItem.children) {
-            if (child.matches('.main__tasks-list__name')) {
-                child.disabled = false;
-                child.addEventListener("focusout", () => {
-                    child.disabled = true;
-                })
-            }
+        listItem = e.target.parentNode.previousSibling.previousSibling;
+        if(listItem.disabled){
+            listItem.disabled = false;
+
+            listItem.addEventListener("blur", (e) =>{
+                listItem.disabled = true;
+            })
         }
     }
 })
