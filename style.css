@@ -1,0 +1,109 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background:linear-gradient(to right, #234a91, #912077);
+}
+
+.wrapper{
+    margin: 0 auto;
+    min-height: 100vh;
+    max-width: 600px;
+    
+}
+
+.header{
+    text-align: center;
+}
+
+.header__nav-title{
+    font-size: 5rem;
+    color: cornsilk;
+}
+
+.main__empty-para{
+    text-align: center;
+    font-size: 2rem;
+    color: cornsilk;
+}
+
+.empty{
+    display: none;
+    
+}
+
+.main__tasks{
+    list-style-type: none;
+    
+}
+
+.main__tasks-list{
+    padding: 10px 2.5rem 2rem 0;
+    display: flex;
+    align-items: center;   
+}
+
+
+
+input[type=checkbox] {
+    width: 10%;
+    height: 1.5rem;
+}
+
+input[type=checkbox]:checked + .main__tasks-list__name{
+    text-decoration: line-through wavy cornflowerblue 10%;
+    color: grey;
+
+    
+}
+
+.main__tasks-list__name{
+    font-size: 2rem;
+    color:cornsilk;
+}
+
+.main__tasks-list__delete{
+    margin-left: auto;
+    padding: 0.8rem 1rem;
+    border-radius: 50%;
+    border: none;
+    background-color: blue;
+    z-index: 1;
+}
+
+.main__tasks-list__delete:hover{
+    background-color: #912077;
+    cursor: pointer;
+}
+
+.main__form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+input[type=text] {
+    width: 60%;
+    height: 2.5rem;
+    border-radius: 10px;
+    border: none;
+    background-color: cornsilk;
+   
+}
+.main__form-btn{
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    border: none;
+    background-color: blue;
+    color: cornsilk;
+}
+
+.main__form-btn:hover{
+    background-color: #912077;
+    cursor: pointer;
+}
+
+
